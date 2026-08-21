@@ -157,8 +157,7 @@ function Solutions() {
             >
               <motion.div
                 initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
+                animate="show"
                 custom={0.1 * (i % SOLUTIONS.length)}
                 variants={fadeUp}
                 className="group relative h-full cursor-pointer rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-colors hover:border-brand/40 light:border-ink/10 light:bg-ink/[0.025]"
