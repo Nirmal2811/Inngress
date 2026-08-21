@@ -181,12 +181,12 @@ function PlanCard({ plan, cycle, index }) {
           type="button"
           className="group relative mt-8 w-full overflow-hidden rounded-md bg-ink py-3.5 text-sm font-semibold text-white"
         >
-          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-white transition-transform duration-500 ease-out group-hover:scale-100" />
+          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-white transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
           <span
             className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-black"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
           />
-          <span className="relative z-10 transition-colors duration-300 group-hover:text-ink">
+          <span className="relative z-10 transition-colors duration-300 group-hover:text-ink max-lg:group-focus:text-ink">
             Pay Now
           </span>
         </button>
@@ -195,12 +195,12 @@ function PlanCard({ plan, cycle, index }) {
           type="button"
           className="group relative mt-8 w-full overflow-hidden rounded-md bg-brand py-3.5 text-sm font-semibold text-ink"
         >
-          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100" />
+          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
           <span
             className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
           />
-          <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+          <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
             Pay Now
           </span>
         </button>

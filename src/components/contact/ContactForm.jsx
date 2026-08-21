@@ -161,12 +161,12 @@ function ContactForm() {
               type="submit"
               className="group relative mt-2 self-start overflow-hidden rounded-md bg-brand px-8 py-3.5 text-sm font-semibold text-ink"
             >
-              <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100" />
+              <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
               <span
                 className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
                 style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
               />
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
                 Submit
               </span>
             </button>

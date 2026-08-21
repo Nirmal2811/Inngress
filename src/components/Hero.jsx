@@ -133,6 +133,19 @@ function Hero() {
         }}
       />
 
+      {/* mobile-only aurora glow (desktop gets visual interest from the parallax image) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden sm:hidden">
+        <motion.div
+          animate={{ x: [0, 20, 0], y: [0, -16, 0], scale: [1, 1.12, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute -top-16 left-1/2 h-80 w-80 -translate-x-[35%] rounded-full bg-brand/25 blur-[80px]"
+        />
+        <motion.div
+          animate={{ x: [0, -16, 0], y: [0, 14, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute top-10 left-1/2 h-64 w-64 -translate-x-[60%] rounded-full bg-accent/20 blur-[70px]"
+        />
+      </div>
       <div className="pointer-events-none absolute inset-y-0 left-16 hidden w-px bg-white/10 light:bg-ink/10 lg:block" />
       <div className="pointer-events-none absolute inset-y-0 right-16 hidden w-px bg-white/10 light:bg-ink/10 lg:block" />
 
@@ -227,12 +240,12 @@ function Hero() {
                 type="button"
                 className="group relative overflow-hidden rounded-md bg-brand px-8 py-4 text-sm font-semibold text-ink"
               >
-                <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100" />
+                <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
                 <span
                   className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
                   style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
                 />
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
                   Start a Project
                 </span>
               </button>
