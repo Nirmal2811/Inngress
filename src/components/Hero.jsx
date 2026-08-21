@@ -199,7 +199,7 @@ function Hero() {
                 <motion.h1
                   custom={0}
                   variants={fadeUp}
-                  className="text-[42px] font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-[58px]"
+                  className="min-h-[137px] text-[42px] font-black leading-[1.08] tracking-tight sm:min-h-[156px] sm:text-5xl lg:min-h-[188px] lg:text-[58px]"
                 >
                   {slide.title[0]}
                   <br />
