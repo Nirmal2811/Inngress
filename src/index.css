@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Site defaults to dark; add class="light" to <html> to opt into light mode. */
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --font-sans: "Sora", sans-serif;
+  --color-brand: #6e3895;
+  --color-brand-dark: #5e307f;
+  --color-ink: #0c0c0f;
+  --color-charcoal: #1a1a1d;
+  --color-accent: #6e3895;
+  --color-accent-dark: #5e307f;
+  --color-paper: #faf9fc;
+  --color-paper-dim: #f0eef5;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+html.light body {
+  background-color: var(--color-paper);
+}
