@@ -124,28 +124,40 @@ function Hero() {
       onMouseLeave={handleMouseLeave}
       className="relative overflow-hidden bg-ink text-white light:bg-paper light:text-ink"
     >
-      {/* decorative dotted texture */}
+      {/* mobile-only hero glow (desktop gets visual interest from the parallax image) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden sm:hidden">
+        {/* dark theme: animated aurora blobs */}
+        <div className="absolute inset-0 light:hidden">
+          <motion.div
+            animate={{ x: [0, 20, 0], y: [0, -16, 0], scale: [1, 1.12, 1] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-16 left-1/2 h-80 w-80 -translate-x-[35%] rounded-full bg-brand/25 blur-[80px]"
+          />
+          <motion.div
+            animate={{ x: [0, -16, 0], y: [0, 14, 0], scale: [1, 1.08, 1] }}
+            transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            className="absolute top-10 left-1/2 h-64 w-64 -translate-x-[60%] rounded-full bg-accent/20 blur-[70px]"
+          />
+        </div>
+
+        {/* light theme: smooth, low-opacity wash instead of a hard blurred blob */}
+        <div
+          className="absolute inset-0 hidden light:block"
+          style={{
+            backgroundImage:
+              'radial-gradient(60% 40% at 50% 0%, rgba(110,56,149,0.12), transparent 70%)',
+          }}
+        />
+      </div>
+
+      {/* decorative dotted texture, layered above the glow so it stays crisp */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35] [--dot:rgba(255,255,255,0.14)] light:opacity-60 light:[--dot:rgba(12,12,15,0.08)]"
+        className="pointer-events-none absolute inset-0 opacity-[0.35] [--dot:rgba(255,255,255,0.14)] light:opacity-70 light:[--dot:rgba(12,12,15,0.1)] max-sm:light:[--dot:rgba(0,0,0,0.18)]"
         style={{
           backgroundImage: 'radial-gradient(var(--dot) 1px, transparent 1px)',
           backgroundSize: '26px 26px',
         }}
       />
-
-      {/* mobile-only aurora glow (desktop gets visual interest from the parallax image) */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden sm:hidden">
-        <motion.div
-          animate={{ x: [0, 20, 0], y: [0, -16, 0], scale: [1, 1.12, 1] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-16 left-1/2 h-80 w-80 -translate-x-[35%] rounded-full bg-brand/25 blur-[80px]"
-        />
-        <motion.div
-          animate={{ x: [0, -16, 0], y: [0, 14, 0], scale: [1, 1.08, 1] }}
-          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute top-10 left-1/2 h-64 w-64 -translate-x-[60%] rounded-full bg-accent/20 blur-[70px]"
-        />
-      </div>
       <div className="pointer-events-none absolute inset-y-0 left-16 hidden w-px bg-white/10 light:bg-ink/10 lg:block" />
       <div className="pointer-events-none absolute inset-y-0 right-16 hidden w-px bg-white/10 light:bg-ink/10 lg:block" />
 
