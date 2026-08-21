@@ -13,6 +13,7 @@ import {
   InstagramIcon,
   FacebookIcon,
 } from './icons/SocialIcons'
+import { useTapEffect } from '../lib/useTapEffect'
 
 const SLIDES = [
   {
@@ -68,6 +69,7 @@ function Hero() {
   const [active, setActive] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const timerRef = useRef(null)
+  const [ctaTapped, triggerCtaTap] = useTapEffect()
 
   useEffect(() => {
     if (isPaused) return
@@ -250,14 +252,19 @@ function Hero() {
             >
               <button
                 type="button"
+                onClick={triggerCtaTap}
                 className="group relative overflow-hidden rounded-md bg-brand px-8 py-4 text-sm font-semibold text-ink"
               >
-                <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
+                <span
+                  className={`pointer-events-none absolute inset-0 origin-bottom-left bg-black transition-transform duration-500 ease-out group-hover:scale-100 ${ctaTapped ? 'scale-100' : 'scale-0'}`}
+                />
                 <span
                   className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
                   style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
                 />
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
+                <span
+                  className={`relative z-10 transition-colors duration-300 group-hover:text-white ${ctaTapped ? 'text-white' : ''}`}
+                >
                   Start a Project
                 </span>
               </button>

@@ -41,15 +41,6 @@ function PageLoader() {
             }}
           />
 
-          {/* oversized, ultra-faint rotating logo watermark */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-            className="pointer-events-none absolute h-[420px] w-[420px] opacity-[0.04] blur-[1px] light:opacity-[0.06]"
-          >
-            <Logo className="h-full w-full" />
-          </motion.div>
-
           {/* drifting accent particles */}
           {[
             { top: '22%', left: '20%', size: 'h-1.5 w-1.5', duration: 5, delay: 0 },

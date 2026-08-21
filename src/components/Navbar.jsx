@@ -3,6 +3,7 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Send, Sun, Moon } from 'lucide-react'
 import { isLightMode, setLightMode } from '../lib/theme'
+import { useTapEffect } from '../lib/useTapEffect'
 import ShareDrawer from './ShareDrawer'
 import Logo from './Logo'
 
@@ -52,6 +53,7 @@ function Navbar() {
   const [shareOpen, setShareOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const [quoteTapped, triggerQuoteTap] = useTapEffect()
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash === '#solutions') {
@@ -120,14 +122,19 @@ function Navbar() {
           </button>
           <a
             href="#"
+            onClick={triggerQuoteTap}
             className="group relative overflow-hidden rounded-md bg-accent px-6 py-3 text-sm font-semibold text-ink"
           >
-            <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100" />
+            <span
+              className={`pointer-events-none absolute inset-0 origin-bottom-left bg-black transition-transform duration-500 ease-out group-hover:scale-100 ${quoteTapped ? 'scale-100' : 'scale-0'}`}
+            />
             <span
               className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-accent"
               style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
             />
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <span
+              className={`relative z-10 transition-colors duration-300 group-hover:text-white ${quoteTapped ? 'text-white' : ''}`}
+            >
               Get A Quote
             </span>
           </a>
@@ -193,14 +200,19 @@ function Navbar() {
               )}
               <a
                 href="#"
+                onClick={triggerQuoteTap}
                 className="group relative mt-4 mb-6 block overflow-hidden rounded-md bg-accent px-6 py-3 text-center text-sm font-semibold text-ink"
               >
-                <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100" />
+                <span
+                  className={`pointer-events-none absolute inset-0 origin-bottom-left bg-black transition-transform duration-500 ease-out group-hover:scale-100 ${quoteTapped ? 'scale-100' : 'scale-0'}`}
+                />
                 <span
                   className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-accent"
                   style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
                 />
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                <span
+                  className={`relative z-10 transition-colors duration-300 group-hover:text-white ${quoteTapped ? 'text-white' : ''}`}
+                >
                   Get A Quote
                 </span>
               </a>

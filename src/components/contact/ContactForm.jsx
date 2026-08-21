@@ -6,6 +6,7 @@ import {
   PinterestIcon,
   InstagramIcon,
 } from '../icons/SocialIcons'
+import { useTapEffect } from '../../lib/useTapEffect'
 
 const INFO = [
   {
@@ -42,6 +43,8 @@ const inputClass =
   'w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none transition-colors focus:border-brand light:border-ink/10 light:bg-ink/[0.03] light:text-ink light:placeholder:text-ink/35'
 
 function ContactForm() {
+  const [submitTapped, triggerSubmitTap] = useTapEffect()
+
   return (
     <section className="relative overflow-hidden bg-ink text-white light:bg-paper light:text-ink">
 
@@ -159,14 +162,19 @@ function ContactForm() {
 
             <button
               type="submit"
+              onClick={triggerSubmitTap}
               className="group relative mt-2 self-start overflow-hidden rounded-md bg-brand px-8 py-3.5 text-sm font-semibold text-ink"
             >
-              <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
+              <span
+                className={`pointer-events-none absolute inset-0 origin-bottom-left bg-black transition-transform duration-500 ease-out group-hover:scale-100 ${submitTapped ? 'scale-100' : 'scale-0'}`}
+              />
               <span
                 className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
                 style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
               />
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
+              <span
+                className={`relative z-10 transition-colors duration-300 group-hover:text-white ${submitTapped ? 'text-white' : ''}`}
+              >
                 Submit
               </span>
             </button>

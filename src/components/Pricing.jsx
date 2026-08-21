@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CheckCircle2, Settings, Gem } from 'lucide-react'
+import { useTapEffect } from '../lib/useTapEffect'
 
 const FEATURES = [
   'Email & Communication Services',
@@ -82,6 +83,7 @@ function PlanCard({ plan, cycle, index }) {
   const originalPrice =
     cycle === 'monthly' ? plan.monthlyOriginal : plan.yearlyOriginal
   const Icon = plan.icon
+  const [payTapped, triggerPayTap] = useTapEffect()
 
   return (
     <motion.div
@@ -179,28 +181,38 @@ function PlanCard({ plan, cycle, index }) {
       {plan.highlighted ? (
         <button
           type="button"
+          onClick={triggerPayTap}
           className="group relative mt-8 w-full overflow-hidden rounded-md bg-ink py-3.5 text-sm font-semibold text-white"
         >
-          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-white transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
+          <span
+            className={`pointer-events-none absolute inset-0 origin-bottom-left bg-white transition-transform duration-500 ease-out group-hover:scale-100 ${payTapped ? 'scale-100' : 'scale-0'}`}
+          />
           <span
             className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-black"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
           />
-          <span className="relative z-10 transition-colors duration-300 group-hover:text-ink max-lg:group-focus:text-ink">
+          <span
+            className={`relative z-10 transition-colors duration-300 group-hover:text-ink ${payTapped ? 'text-ink' : ''}`}
+          >
             Pay Now
           </span>
         </button>
       ) : (
         <button
           type="button"
+          onClick={triggerPayTap}
           className="group relative mt-8 w-full overflow-hidden rounded-md bg-brand py-3.5 text-sm font-semibold text-ink"
         >
-          <span className="pointer-events-none absolute inset-0 origin-bottom-left scale-0 bg-black transition-transform duration-500 ease-out group-hover:scale-100 max-lg:group-focus:scale-100" />
+          <span
+            className={`pointer-events-none absolute inset-0 origin-bottom-left bg-black transition-transform duration-500 ease-out group-hover:scale-100 ${payTapped ? 'scale-100' : 'scale-0'}`}
+          />
           <span
             className="pointer-events-none absolute right-0 top-0 z-10 h-8 w-8 bg-brand"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
           />
-          <span className="relative z-10 transition-colors duration-300 group-hover:text-white max-lg:group-focus:text-white">
+          <span
+            className={`relative z-10 transition-colors duration-300 group-hover:text-white ${payTapped ? 'text-white' : ''}`}
+          >
             Pay Now
           </span>
         </button>
